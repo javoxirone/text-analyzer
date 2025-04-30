@@ -2,7 +2,7 @@
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">TextAnalyzer</a>
+            <a class="navbar-brand" href="{% url 'index' %}">TextAnalyzer</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -10,20 +10,15 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Главная</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Главная</a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Список обработанных файлов</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="https://github.com/javoxirone/" target="_blank">Проект в GitHub <i class="bi bi-box-arrow-up-right"></i></a>
+                        <a class="nav-link" href="https://github.com/javoxirone/text-analyzer" target="_blank">Проект в GitHub <i class="bi bi-box-arrow-up-right"></i></a>
                     </li>
                 </ul>
-                {#        <form class="d-flex" role="search">#}
-                {#          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
-                {#          <button class="btn btn-outline-success" type="submit">Search</button>#}
-                {#        </form>#}
-                <a href="#" class="btn btn-success" type="submit">Обработать новый файл <i class="bi bi-plus-circle"></i></a>
+
+                <a href="{% url 'new-file-upload' %}" class="btn btn-success">Обработать новый файл <i class="bi bi-plus-circle"></i></a>
             </div>
         </div>
     </nav>

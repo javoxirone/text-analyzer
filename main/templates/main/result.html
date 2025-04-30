@@ -6,17 +6,8 @@
 
 {% block main %}
 <div class="container py-5">
-    <!-- Header Section -->
-    <div class="row mb-5 text-center">
-        <div class="col-lg-8 mx-auto">
-            <h1 class="display-4 fw-bold text-primary mb-3">TextAnalyzer</h1>
-            <p class="lead text-muted">Интеллектуальный анализ текстовых файлов с использованием алгоритма TF-IDF</p>
-            <hr class="my-4">
-        </div>
-    </div>
-
     <!-- Data Table Section -->
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-lg-10 mx-auto">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
@@ -27,21 +18,17 @@
                         <table class="table table-striped table-hover">
                             <thead class="table-dark">
                                 <tr>
-                                    <th scope="col" class="text-center">#</th>
                                     <th scope="col">Слово</th>
                                     <th scope="col" class="text-center">TF</th>
-                                    <th scope="col" class="text-center">IDF</th>
-                                    <th scope="col" class="text-center">TF-IDF</th>
+                                    <th scope="col" class="text-center">IDF (Учитываются все загруженные документы)</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for entry in analysis.tfidf_data %}
                                 <tr>
-                                    <th scope="row" class="text-center">{{ loop.index }}</th>
                                     <td class="fw-bold">{{ entry.word }}</td>
                                     <td class="text-center">{{ entry.tf|floatformat:4 }}</td>
                                     <td class="text-center">{{ entry.idf|floatformat:4 }}</td>
-                                    <td class="text-center">{{ entry.tfidf|floatformat:4 }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -54,37 +41,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Visualization Section -->
-    <div class="row mt-5">
-        <div class="col-lg-10 mx-auto">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Топ-10 слов по значению TF-IDF</h5>
-                </div>
-                <div class="card-body">
-                    <div class="chart-container" style="position: relative; height:300px;">
-                        <!-- Here you can add chart visualization if needed -->
-                        <div class="alert alert-info">
-                            <i class="bi bi-info-circle me-2"></i>
-                            Для более детального анализа текста, вы можете экспортировать результаты или использовать дополнительные опции анализа.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Action Buttons -->
-{#    <div class="row mt-4">#}
-{#        <div class="col-lg-10 mx-auto d-flex justify-content-between">#}
-{#            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">#}
-{#                <i class="bi bi-arrow-left"></i> Назад#}
-{#            </a>#}
-{#            <button class="btn btn-success" onclick="window.print()">#}
-{#                <i class="bi bi-printer"></i> Экспорт результатов#}
-{#            </button>#}
-{#        </div>#}
-{#    </div>#}
 </div>
 {% endblock %}
