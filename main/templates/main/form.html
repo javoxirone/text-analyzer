@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    TextAnalyzer | Загрузить новый файл для анализа
+{% endblock %}
+
+
+{% block main %}
+    <div class="px-4 py-5 my-5">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="text-end">
+                        <button type="submit" class="btn btn-primary btn-lg">Анализ <i class="bi bi-clipboard-data"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
