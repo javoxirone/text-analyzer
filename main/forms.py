@@ -13,5 +13,16 @@ class TextFileUploadForm(forms.Form):
         required=True,
     )
 
+    is_public = forms.BooleanField(
+        label='Сделать файл и его анализ общедоступными',
+        required=False,
+        initial=False,
+        widget=forms.CheckboxInput(
+            attrs={
+                'class': 'form-check-input',
+            }
+        )
+    )
+
     class Meta:
-        fields = ['file']
+        fields = ['file', 'is_public']

@@ -4,9 +4,10 @@ from django.db import models
 
 # Create your models here.
 class File(models.Model):
-    file = models.FileField(upload_to='files/', null=False, blank=False, verbose_name="File")
-    file_name = models.CharField(max_length=255, null=False, blank=True, verbose_name="File name", editable=False)
-    uploaded_at = models.DateTimeField(auto_now_add=True, null=False, blank=False, verbose_name="Uploaded at")
+    file = models.FileField(upload_to='files/', null=False, blank=False, verbose_name="Файл")
+    file_name = models.CharField(max_length=255, null=False, blank=True, verbose_name="Имя файла", editable=False)
+    is_public = models.BooleanField(default=False, null=False, blank=False, verbose_name="Статус видимости (публичный?)")
+    uploaded_at = models.DateTimeField(auto_now_add=True, null=False, blank=False, verbose_name="Дата и время загрузки")
 
     def save(self, *args, **kwargs):
         if not self.file_name and self.file:
@@ -24,5 +25,5 @@ class File(models.Model):
         return self.file_name
 
     class Meta:
-        verbose_name = "File"
-        verbose_name_plural = "Files"
+        verbose_name = "Файл"
+        verbose_name_plural = "Файлы"
